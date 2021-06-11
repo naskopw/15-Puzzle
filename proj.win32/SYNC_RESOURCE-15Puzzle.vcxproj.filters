@@ -1,0 +1,17 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\naskopw\source\repos\15-Puzzle\proj.win32\CMakeFiles\4def12d0b5b8f52416e989789394414b\SYNC_RESOURCE-15Puzzle.rule">
+      <Filter>CMake Rules</Filter>
+    </CustomBuild>
+    <CustomBuild Include="C:\Users\naskopw\source\repos\15-Puzzle\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="C:\Users\naskopw\source\repos\15-Puzzle\proj.win32\CMakeFiles\SYNC_RESOURCE-15Puzzle" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="CMake Rules">
+      <UniqueIdentifier>{D66A60BA-9FC0-3AEF-A3D0-1159852BE688}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>

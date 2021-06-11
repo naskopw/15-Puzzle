@@ -1,0 +1,16 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<Project ToolsVersion="16.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
+  <ItemGroup>
+    <ClCompile Include="C:\Users\naskopw\source\repos\15-Puzzle\cocos2d\external\md5\md5.c">
+      <Filter>Source Files</Filter>
+    </ClCompile>
+  </ItemGroup>
+  <ItemGroup>
+    <CustomBuild Include="C:\Users\naskopw\source\repos\15-Puzzle\cocos2d\external\md5\CMakeLists.txt" />
+  </ItemGroup>
+  <ItemGroup>
+    <Filter Include="Source Files">
+      <UniqueIdentifier>{BDD31CF3-DABE-328A-BDD4-B44DFF16666D}</UniqueIdentifier>
+    </Filter>
+  </ItemGroup>
+</Project>
