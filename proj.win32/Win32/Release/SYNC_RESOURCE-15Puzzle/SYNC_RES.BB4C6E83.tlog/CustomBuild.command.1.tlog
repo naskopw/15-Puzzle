@@ -1,0 +1,20 @@
+^C:\USERS\NASKOPW\SOURCE\REPOS\15-PUZZLE\PROJ.WIN32\CMAKEFILES\4DEF12D0B5B8F52416E989789394414B\SYNC_RESOURCE-15PUZZLE.RULE
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -E echo "Copying resources for 15Puzzle ..."
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
+^C:\USERS\NASKOPW\SOURCE\REPOS\15-PUZZLE\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/naskopw/source/repos/15-Puzzle -BC:/Users/naskopw/source/repos/15-Puzzle/proj.win32 --check-stamp-file C:/Users/naskopw/source/repos/15-Puzzle/proj.win32/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd

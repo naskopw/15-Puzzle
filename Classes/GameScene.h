@@ -3,7 +3,7 @@
 #include <vector>
 #include <memory>
 #include "PuzzlePartSprite.h"
-#include "model/Gameboard.h"
+#include "model/Game.h"
 
 class GameScene : public cocos2d::Scene
 {
@@ -18,6 +18,7 @@ private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
     void drawPuzzleParts();
-    std::vector<std::unique_ptr<PuzzlePartSprite>> parts;
-    std::unique_ptr<Gameboard> board;
+    std::vector<std::unique_ptr<PuzzlePartSprite>> sprites;
+    std::unique_ptr<Game> game;
+    void setupOnTouchBeginHandler();
 };

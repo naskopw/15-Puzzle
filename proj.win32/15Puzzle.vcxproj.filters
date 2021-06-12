@@ -28,6 +28,9 @@
     <ClCompile Include="..\Classes\PuzzlePartSprite.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\model\Game.cpp">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\naskopw\source\repos\15-Puzzle\Classes\AppDelegate.h">
@@ -80,6 +83,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\PuzzlePartSprite.h">
       <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\Game.h">
+      <Filter>Source Files\Classes\model</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

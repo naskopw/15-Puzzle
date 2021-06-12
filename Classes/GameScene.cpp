@@ -2,6 +2,7 @@
 #include "Definitions.h"
 #include "model/Gameboard.h"
 #include "PuzzlePartSprite.h"
+
 USING_NS_CC;
 
 Scene* GameScene::createScene()
@@ -10,57 +11,53 @@ Scene* GameScene::createScene()
 }
 
 
-// on "init" you need to initialize your instance
 bool GameScene::init()
 {
-	//////////////////////////////
-	// 1. super init first
 	if (!Scene::init())
 	{
 		return false;
 	}
-
 	visibleSize = Director::getInstance()->getVisibleSize();
 	origin = Director::getInstance()->getVisibleOrigin();
 	boardSizeX = visibleSize.width * BOARD_SCALE_SIZE;
 	boardSizeY = visibleSize.height * BOARD_SCALE_SIZE;
-	board = std::make_unique<Gameboard>();
-	
+	game = std::make_unique<Game>();
+	game->start();
 	drawPuzzleParts();
-
+	setupOnTouchBeginHandler();
 	return true;
 }
 
 
 void GameScene::drawPuzzleParts()
 {
-	int pieceWidth = boardSizeX / TOTAL_COLUMNS;
-	int pieceHeight = boardSizeY / TOTAL_ROWS;
-	for (auto& part : board->getPieces())
+	for (auto& part : game->getBoard()->getPieces())
 	{
-		parts.push_back(std::make_unique<PuzzlePartSprite>(part));
-		auto& currentSprite = parts.at(parts.size() - 1);
+		sprites.push_back(std::make_unique<PuzzlePartSprite>(part));
+		auto& currentSprite = sprites.at(sprites.size() - 1);
 		currentSprite->move(part.getCurrentPosition());
 		this->addChild(currentSprite->getSprite());
 	}
+
+}
+
+void GameScene::setupOnTouchBeginHandler()
+{
 	auto listener = EventListenerTouchOneByOne::create();
 
 	listener->onTouchBegan = [&](cocos2d::Touch* touch, cocos2d::Event* event)
 	{
-		cocos2d::Vec2 p = touch->getLocation();
-
-		for (auto& part : parts)
+		for (auto& sprite : sprites)
 		{
-			auto bb = part->getSprite()->getBoundingBox();
-			if (bb.containsPoint(p))
+			auto bb = sprite->getSprite()->getBoundingBox();
+			if (bb.containsPoint(touch->getLocation()))
 			{
-				board->move(*part->part);
-				part->move(part->part->getCurrentPosition());
+				game->getBoard()->move(*sprite->part);
+				sprite->move(sprite->part->getCurrentPosition());
 				return true;
 			}
 		}
 		return false;
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
-
 }

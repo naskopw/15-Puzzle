@@ -2,6 +2,8 @@
 #include "MainMenuScene.h"
 #include "Definitions.h"
 
+#include <AudioEngine.h>
+
 USING_NS_CC;
 
 Scene* SplashScreen::createScene()
@@ -19,6 +21,7 @@ bool SplashScreen::init()
         return false;
     }
 
+    AudioEngine::play2d("ForestWalk-320bit.mp3", true);
     Size visibleSize = Director::getInstance()->getVisibleSize();
     Vec2 origin = Director::getInstance()->getVisibleOrigin();
 

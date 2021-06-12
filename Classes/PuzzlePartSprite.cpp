@@ -37,5 +37,7 @@ float PuzzlePartSprite::screenYPos(const Position& pos) const
 
 void PuzzlePartSprite::move(const Position& pos)
 {
-	sprite->setPosition(screenXPos(pos), screenYPos(pos));
+	//sprite->setPosition(screenXPos(pos), screenYPos(pos));
+	auto action = MoveTo::create(ANIMATION_DURATION, Point(screenXPos(pos), screenYPos(pos)));
+	sprite->runAction(action);
 }

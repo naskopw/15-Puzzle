@@ -1,0 +1,10 @@
+^C:\USERS\NASKOPW\SOURCE\REPOS\15-PUZZLE\COCOS2D\EXTERNAL\CONVERTUTF\CMAKELISTS.TXT
+setlocal
+"C:\Program Files\CMake\bin\cmake.exe" -SC:/Users/naskopw/source/repos/15-Puzzle -BC:/Users/naskopw/source/repos/15-Puzzle/proj.win32 --check-stamp-file C:/Users/naskopw/source/repos/15-Puzzle/proj.win32/engine/external/ConvertUTF/CMakeFiles/generate.stamp
+if %errorlevel% neq 0 goto :cmEnd
+:cmEnd
+endlocal & call :cmErrorLevel %errorlevel% & goto :cmDone
+:cmErrorLevel
+exit /b %1
+:cmDone
+if %errorlevel% neq 0 goto :VCEnd
