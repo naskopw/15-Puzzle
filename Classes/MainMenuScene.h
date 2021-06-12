@@ -14,4 +14,5 @@ private:
 	void setMenuItems(const std::vector<cocos2d::MenuItemFont*>& menuItems);
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
+	void createMenu(std::vector<cocos2d::MenuItemFont*>& menuItems);
 };

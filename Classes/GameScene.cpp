@@ -21,5 +21,6 @@ bool GameScene::init()
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
 
+
 	return true;
 }
