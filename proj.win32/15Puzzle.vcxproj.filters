@@ -19,6 +19,15 @@
     <ClCompile Include="..\Classes\MainMenuScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\model\Gameboard.cpp">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\model\PuzzlePart.cpp">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\PuzzlePartSprite.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\naskopw\source\repos\15-Puzzle\Classes\AppDelegate.h">
@@ -60,6 +69,18 @@
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
+    <ClInclude Include="..\Classes\model\Gameboard.h">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\Position.h">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\model\PuzzlePart.h">
+      <Filter>Source Files\Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\PuzzlePartSprite.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <CustomBuild Include="C:\Users\naskopw\source\repos\15-Puzzle\CMakeLists.txt" />
@@ -87,6 +108,9 @@
     </Filter>
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{B1C8F552-F220-337D-BB33-C505443A2807}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Source Files\Classes\model">
+      <UniqueIdentifier>{81f8e12a-56ee-447d-ac16-52017fe914fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
 </Project>

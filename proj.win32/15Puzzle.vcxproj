@@ -803,10 +803,17 @@ if %errorlevel% neq 0 goto :VCEnd</Command>
   <ItemGroup>
     <ClCompile Include="..\Classes\GameScene.cpp" />
     <ClCompile Include="..\Classes\MainMenuScene.cpp" />
+    <ClCompile Include="..\Classes\model\Gameboard.cpp" />
+    <ClCompile Include="..\Classes\model\PuzzlePart.cpp" />
+    <ClCompile Include="..\Classes\PuzzlePartSprite.cpp" />
     <ClCompile Include="..\Classes\SplashScreen.cpp" />
     <ClInclude Include="..\Classes\Definitions.h" />
     <ClInclude Include="..\Classes\GameScene.h" />
     <ClInclude Include="..\Classes\MainMenuScene.h" />
+    <ClInclude Include="..\Classes\model\Gameboard.h" />
+    <ClInclude Include="..\Classes\model\Position.h" />
+    <ClInclude Include="..\Classes\model\PuzzlePart.h" />
+    <ClInclude Include="..\Classes\PuzzlePartSprite.h" />
     <ClInclude Include="..\Classes\SplashScreen.h" />
     <ClInclude Include="C:\Users\naskopw\source\repos\15-Puzzle\Classes\AppDelegate.h" />
     <ClInclude Include="C:\Users\naskopw\source\repos\15-Puzzle\proj.win32\main.h" />
