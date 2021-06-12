@@ -12,6 +12,8 @@ public:
 	Position getCurrentPosition() const;
 	int getId() const;
 	void move(Position emptyPos);
+	void setPosition(Position emptyPos);
 	friend std::ostream& operator<<(std::ostream& os, const PuzzlePart& p);
+	friend bool operator< (const PuzzlePart& a, const PuzzlePart& b);
 };
 

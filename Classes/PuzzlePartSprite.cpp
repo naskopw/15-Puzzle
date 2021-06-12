@@ -8,9 +8,8 @@ PuzzlePartSprite::PuzzlePartSprite(const PuzzlePart& part) :
 	sprite(cocos2d::Sprite::create(resourceName))
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
-	CCLOG("%d, {%d,%d}", part.getId(), part.getCurrentPosition().x, part.getCurrentPosition().y);
-	int spriteXPos = (this->part->getId() - 1) % spriteSheetSize.first * spriteCellSize;
-	int spriteYPos = (this->part->getId() - 1) / spriteSheetSize.first * spriteCellSize;
+	float spriteXPos = (this->part->getId() - 1) % spriteSheetSize.first * spriteCellSize;
+	float spriteYPos = (this->part->getId() - 1) / spriteSheetSize.first * spriteCellSize;
 	sprite->setTextureRect(Rect(spriteXPos, spriteYPos, spriteCellSize, spriteCellSize));
 }
 
@@ -23,8 +22,8 @@ float PuzzlePartSprite::screenXPos(const Position& pos) const
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
-	float margin = visibleSize.width * (1.0f - BOARD_SCALE_SIZE) + origin.x;
-	return margin+pos.x*spriteCellSize;
+	float margin = visibleSize.width * (1.0F - BOARD_SCALE_SIZE) + origin.x;
+	return margin + static_cast<float>(pos.x) * spriteCellSize;
 }
 
 float PuzzlePartSprite::screenYPos(const Position& pos) const
@@ -32,12 +31,10 @@ float PuzzlePartSprite::screenYPos(const Position& pos) const
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
 	float margin = visibleSize.height * (1 - BOARD_SCALE_SIZE) + origin.y;
-	return margin + pos.y * spriteCellSize;
+	return margin + static_cast<float>(pos.y) * spriteCellSize;
 }
 
 void PuzzlePartSprite::move(const Position& pos)
 {
-	//sprite->setPosition(screenXPos(pos), screenYPos(pos));
-	auto action = MoveTo::create(ANIMATION_DURATION, Point(screenXPos(pos), screenYPos(pos)));
-	sprite->runAction(action);
+	sprite->setPosition(Point(screenXPos(pos), screenYPos(pos)));
 }

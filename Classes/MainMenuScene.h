@@ -8,10 +8,9 @@ public:
 	// implement the "static create()" method manually
 	CREATE_FUNC(MainMenuScene);
 private:
-	int menuItemSpacing;
+	float menuItemSpacing = 10;
 	void goToGameScene(cocos2d::Ref* sender);
 	void exit(cocos2d::Ref* sender);
-	void setMenuItems(const std::vector<cocos2d::MenuItemFont*>& menuItems);
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
 	void createMenu(std::vector<cocos2d::MenuItemFont*>& menuItems);

@@ -1,11 +1,18 @@
 #pragma once
 
-#define DISPLAY_TIME_SPLASH_SCENE 2
-#define TRANSITION_TIME 0.5
+constexpr auto DISPLAY_TIME_SPLASH_SCENE = 2;
+constexpr auto TRANSITION_TIME = 0.5F;
 
-#define TOTAL_ROWS 4
-#define TOTAL_COLUMNS TOTAL_ROWS
-#define TOTAL_PARTS  TOTAL_ROWS*TOTAL_COLUMNS-1
+constexpr auto TOTAL_ROWS = 4;
+constexpr auto TOTAL_COLUMNS = TOTAL_ROWS;
+constexpr auto TOTAL_PARTS = TOTAL_ROWS * TOTAL_COLUMNS - 1;
 
-#define BOARD_SCALE_SIZE 0.8
-#define ANIMATION_DURATION 0.5
+constexpr auto BOARD_SCALE_SIZE = 0.8F;
+constexpr auto ANIMATION_DURATION = 0.5F;
+
+//Resources
+constexpr auto THEME_SONG_RESOURCE = "ForestWalk-320bit.mp3";
+constexpr auto SPLASH_SCREEN_SPRITE_RESOURCE = "SplashScreen.png";
+constexpr auto BACKGROUND_SPRITE_RESOURCE = "Background.png";
+constexpr auto TITLE_SPRITE_RESOURCE = "Title.png";
+constexpr auto MENU_PREFERED_FONT_RESOURCE = "Ink free";

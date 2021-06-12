@@ -1,4 +1,5 @@
 #include "GameScene.h"
+#include "GameOverScene.h"
 #include "Definitions.h"
 #include "model/Gameboard.h"
 #include "PuzzlePartSprite.h"
@@ -19,8 +20,6 @@ bool GameScene::init()
 	}
 	visibleSize = Director::getInstance()->getVisibleSize();
 	origin = Director::getInstance()->getVisibleOrigin();
-	boardSizeX = visibleSize.width * BOARD_SCALE_SIZE;
-	boardSizeY = visibleSize.height * BOARD_SCALE_SIZE;
 	game = std::make_unique<Game>();
 	game->start();
 	drawPuzzleParts();
@@ -54,6 +53,16 @@ void GameScene::setupOnTouchBeginHandler()
 			{
 				game->getBoard()->move(*sprite->part);
 				sprite->move(sprite->part->getCurrentPosition());
+
+				for (auto& x : game->getBoard()->getPieces())
+				{
+					CCLOG("%d {%d, %d}\n", x.getId(), x.getCurrentPosition().x, x.getCurrentPosition().y);
+				}
+				if (game->getBoard()->isSolved()) 
+				{
+					auto scene = GameOverScene::createScene();	
+					Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
+				}
 				return true;
 			}
 		}

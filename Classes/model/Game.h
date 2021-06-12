@@ -9,7 +9,5 @@ private:
 public:
 	Game() = default;
 	void start();
-	bool isSolved();
 	const std::unique_ptr<Gameboard>& getBoard();
-
 };

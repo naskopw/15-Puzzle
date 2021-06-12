@@ -6,6 +6,11 @@ std::ostream& operator<<(std::ostream& os, const PuzzlePart& p)
 	return os;
 }
 
+bool operator<(const PuzzlePart& a, const PuzzlePart& b)
+{
+	return a.getId() < b.getId();
+}
+
 bool PuzzlePart::canMoveTo(Position emptyPos) const
 {
 	return (std::abs(position.x - emptyPos.x) <= 1) && !(std::abs(position.y - emptyPos.y) >= 1) ||
@@ -30,4 +35,9 @@ void PuzzlePart::move(Position newPos)
 	else {
 		throw std::runtime_error("Error while moving");
 	}
+}
+
+void PuzzlePart::setPosition(Position emptyPos)
+{
+	position = emptyPos;
 }

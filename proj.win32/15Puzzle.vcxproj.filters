@@ -31,6 +31,9 @@
     <ClCompile Include="..\Classes\model\Game.cpp">
       <Filter>Source Files\Classes\model</Filter>
     </ClCompile>
+    <ClCompile Include="..\Classes\GameOverScene.cpp">
+      <Filter>Source Files\Classes</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="C:\Users\naskopw\source\repos\15-Puzzle\Classes\AppDelegate.h">
@@ -86,6 +89,9 @@
     </ClInclude>
     <ClInclude Include="..\Classes\model\Game.h">
       <Filter>Source Files\Classes\model</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\GameOverScene.h">
+      <Filter>Source Files\Classes</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>

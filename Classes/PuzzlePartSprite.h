@@ -11,7 +11,7 @@
 class PuzzlePartSprite
 {
 public:
-	const int spriteCellSize = 152;
+	const float spriteCellSize = 152;
 	const std::pair<int, int> spriteSheetSize = std::make_pair(3, 5);
 	const std::string resourceName = "parts.png";
 	PuzzlePartSprite(const PuzzlePart& part);
