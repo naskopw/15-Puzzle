@@ -16,5 +16,4 @@ private:
 	void exit(cocos2d::Ref* sender);
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
-	const char* const TITLE = "15 Puzzle";
 };
