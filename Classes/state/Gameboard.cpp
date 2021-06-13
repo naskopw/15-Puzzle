@@ -45,12 +45,13 @@ void Gameboard::move(PuzzlePart& part)
 		Position newEmptyPos(part.getCurrentPosition());
 		part.move(emptyPos);
 		emptyPos = newEmptyPos;
-		for (auto& p : parts) {
-			if (p.getId() == part.getId())
-			{
-				p.setPosition(part.getCurrentPosition());
-			}
-		}
+		std::for_each(parts.begin(), parts.end(),
+			[part](PuzzlePart& p) {
+				if (p.getId() == part.getId())
+					p.setPosition(part.getCurrentPosition());
+			});
+
+
 	}
 	catch (const InvalidMoveException&)
 	{

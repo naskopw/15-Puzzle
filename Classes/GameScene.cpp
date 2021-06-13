@@ -1,6 +1,9 @@
 #include "GameScene.h"
 #include "GameOverScene.h"
 #include "Definitions.h"
+#include <string>
+#include <sstream>
+#include <time.h>
 
 USING_NS_CC;
 
@@ -21,6 +24,7 @@ bool GameScene::init()
 	game = std::make_unique<Game>();
 	game->start();
 	drawScene();
+	this->schedule(CC_SCHEDULE_SELECTOR(GameScene::updateTimer), 1.0f);
 	setupOnTouchBeginHandler();
 	return true;
 }
@@ -28,7 +32,6 @@ bool GameScene::init()
 
 void GameScene::drawScene()
 {
-	CCLOG("%d", sizeof(PuzzlePart));
 	for (auto& part : game->getBoard()->getPieces())
 	{
 		sprites.push_back(std::make_unique<PuzzlePartSprite>(part));
@@ -36,7 +39,7 @@ void GameScene::drawScene()
 		currentSprite->move(part.getCurrentPosition());
 		this->addChild(currentSprite->getSprite());
 	}
-
+	setupTimer();
 }
 
 void GameScene::setupOnTouchBeginHandler()
@@ -52,9 +55,9 @@ void GameScene::setupOnTouchBeginHandler()
 			{
 				game->getBoard()->move(*sprite->part);
 				sprite->move(sprite->part->getCurrentPosition());
-				if (game->getBoard()->isSolved()) 
+				if (game->getBoard()->isSolved())
 				{
-					auto scene = GameOverScene::createScene();	
+					auto scene = GameOverScene::createScene();
 					Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 				}
 				return true;
@@ -63,4 +66,23 @@ void GameScene::setupOnTouchBeginHandler()
 		return false;
 	};
 	_eventDispatcher->addEventListenerWithSceneGraphPriority(listener, this);
+}
+
+void GameScene::updateTimer(float dt)
+{
+	timer++;
+	std::time_t seconds(timer);
+	tm* p = gmtime(&seconds);
+	std::stringstream ss;
+	ss << p->tm_hour << ':' << p->tm_min << ':' << p->tm_sec;
+	timerLabel->setString(ss.str());
+}
+
+void GameScene::setupTimer()
+{
+	timerSprite = Sprite::create();
+	timerSprite->setPosition(visibleSize.width * 0.85F + origin.x, visibleSize.height / 2 + origin.y);
+	timerLabel = Label::createWithSystemFont("0:0:0", MENU_PREFERED_FONT_RESOURCE, 42);
+	timerSprite->addChild(timerLabel);
+	this->addChild(timerSprite);
 }

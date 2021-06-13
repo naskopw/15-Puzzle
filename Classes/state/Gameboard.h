@@ -1,8 +1,9 @@
 #pragma once
-#include "../Definitions.h"
 #include <vector>
+#include "../Definitions.h"
 #include "PuzzlePart.h"
 #include "Position.h"
+
 class Gameboard
 {
 private:
