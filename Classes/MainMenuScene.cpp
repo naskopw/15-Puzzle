@@ -2,7 +2,6 @@
 #include "Definitions.h"
 #include "GameScene.h"
 #include <vector>
-
 USING_NS_CC;
 
 Scene* MainMenuScene::createScene()
@@ -26,11 +25,15 @@ bool MainMenuScene::init()
 	menuItemSpacing = visibleSize.height / 22;
 	auto backgroundSprite = Sprite::create(BACKGROUND_SPRITE_RESOURCE);
 	backgroundSprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
-	backgroundSprite->setScale(visibleSize.height/backgroundSprite->getContentSize().height);
+	backgroundSprite->setScale(visibleSize.height / backgroundSprite->getContentSize().height);
 	this->addChild(backgroundSprite);
 
-	auto titleSprite = Sprite::create(TITLE_SPRITE_RESOURCE);
-	titleSprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height - titleSprite->getContentSize().height));
+	
+	auto titleSprite = menuFactory::createTitle(TITLE,
+		MENU_PREFERED_FONT_RESOURCE,
+		36,
+		Color3B(0, 0, 0),
+		Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + menuItemSpacing * 4));
 
 	this->addChild(titleSprite);
 
@@ -39,7 +42,9 @@ bool MainMenuScene::init()
 		MenuItemFont::create("Play", CC_CALLBACK_1(MainMenuScene::goToGameScene, this)),
 		MenuItemFont::create("Exit", CC_CALLBACK_1(MainMenuScene::exit, this)),
 	};
-	createMenu(menuItems);
+
+	auto menu = menuFactory::createMenu(menuItems, Color3B(0, 0, 0), menuItemSpacing);
+	this->addChild(menu);
 	return true;
 }
 
@@ -52,17 +57,4 @@ void MainMenuScene::goToGameScene(cocos2d::Ref* sender)
 void MainMenuScene::exit(cocos2d::Ref* sender)
 {
 	Director::getInstance()->end();
-}
-
-
-void MainMenuScene::createMenu(std::vector<cocos2d::MenuItemFont*>& menuItems) {
-	auto menu = Menu::create();
-	for (std::size_t i = 0; i < menuItems.size(); i++) {
-		menuItems[i]->setColor(Color3B(0, 0, 0));
-		menuItems[i]->setPosition(Point(visibleSize.width / 2 + origin.x,
-			visibleSize.height / 2 + origin.y-i*menuItemSpacing));
-		menu->addChild(menuItems[i]);
-	}
-	menu->setPosition(Point::ZERO);
-	this->addChild(menu);
 }

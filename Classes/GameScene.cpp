@@ -1,8 +1,6 @@
 #include "GameScene.h"
 #include "GameOverScene.h"
 #include "Definitions.h"
-#include "model/Gameboard.h"
-#include "PuzzlePartSprite.h"
 
 USING_NS_CC;
 
@@ -22,13 +20,13 @@ bool GameScene::init()
 	origin = Director::getInstance()->getVisibleOrigin();
 	game = std::make_unique<Game>();
 	game->start();
-	drawPuzzleParts();
+	drawScene();
 	setupOnTouchBeginHandler();
 	return true;
 }
 
 
-void GameScene::drawPuzzleParts()
+void GameScene::drawScene()
 {
 	for (auto& part : game->getBoard()->getPieces())
 	{

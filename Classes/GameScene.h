@@ -1,9 +1,9 @@
 #pragma once
-#include "cocos2d.h"
 #include <vector>
 #include <memory>
+#include "cocos2d.h"
 #include "PuzzlePartSprite.h"
-#include "model/Game.h"
+#include "state/Game.h"
 
 class GameScene : public cocos2d::Scene
 {
@@ -15,7 +15,7 @@ public:
 private:
     cocos2d::Size visibleSize;
     cocos2d::Vec2 origin;
-    void drawPuzzleParts();
+    void drawScene();
     std::vector<std::unique_ptr<PuzzlePartSprite>> sprites;
     std::unique_ptr<Game> game;
     void setupOnTouchBeginHandler();

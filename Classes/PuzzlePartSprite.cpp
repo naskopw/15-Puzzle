@@ -5,7 +5,7 @@ USING_NS_CC;
 
 PuzzlePartSprite::PuzzlePartSprite(const PuzzlePart& part) :
 	part(std::make_unique<PuzzlePart>(part)),
-	sprite(cocos2d::Sprite::create(resourceName))
+	sprite(cocos2d::Sprite::create(PARTS_SPRITE_SHEET_RESOURCE))
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	float spriteXPos = (this->part->getId() - 1) % spriteSheetSize.first * spriteCellSize;
@@ -30,7 +30,7 @@ float PuzzlePartSprite::screenYPos(const Position& pos) const
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
-	float margin = visibleSize.height * (1 - BOARD_SCALE_SIZE) + origin.y;
+	float margin = visibleSize.height * (1.0F - BOARD_SCALE_SIZE) + origin.y;
 	return margin + static_cast<float>(pos.y) * spriteCellSize;
 }
 

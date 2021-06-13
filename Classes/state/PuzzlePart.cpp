@@ -1,10 +1,5 @@
 #include "PuzzlePart.h"
-#include<stdexcept>
-std::ostream& operator<<(std::ostream& os, const PuzzlePart& p)
-{
-	os << p.id << " {" << p.position.x << "," << p.position.y << "}";
-	return os;
-}
+#include "InvalidMoveException.h"
 
 bool operator<(const PuzzlePart& a, const PuzzlePart& b)
 {
@@ -32,8 +27,9 @@ void PuzzlePart::move(Position newPos)
 	if (canMoveTo(newPos)) {
 		position = newPos;
 	}
-	else {
-		throw std::runtime_error("Error while moving");
+	else
+	{
+		throw InvalidMoveException();
 	}
 }
 

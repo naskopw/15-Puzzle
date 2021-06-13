@@ -2,18 +2,15 @@
 #include<utility>
 #include<string>
 #include "cocos2d.h"
-#include "model/PuzzlePart.h"
-#include "model/Position.h"
-#include "model/PuzzlePart.h"
-#include <external/recast/DetourCrowd/DetourObstacleAvoidance.h>
-#include "model/PuzzlePart.h"
+#include "state/PuzzlePart.h"
+#include "state/Position.h"
+#include "state/PuzzlePart.h"
 
 class PuzzlePartSprite
 {
 public:
 	const float spriteCellSize = 152;
 	const std::pair<int, int> spriteSheetSize = std::make_pair(3, 5);
-	const std::string resourceName = "parts.png";
 	PuzzlePartSprite(const PuzzlePart& part);
 	cocos2d::Sprite* getSprite();
 	void move(const Position& pos);

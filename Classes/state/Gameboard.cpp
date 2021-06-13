@@ -1,10 +1,10 @@
-#include "Gameboard.h"
 #include <iostream>
-#include<numeric>
+#include <numeric>
 #include <algorithm>
-#include<chrono>
+#include <chrono>
 #include <random>
-#include<stdexcept>
+#include "Gameboard.h"
+#include "InvalidMoveException.h"
 #include "../cocos2d.h"
 
 void Gameboard::createParts()
@@ -29,7 +29,7 @@ std::vector<int> Gameboard::seedIds()
 	auto seed = std::chrono::system_clock::now().time_since_epoch().count();
 	do
 	{
-		std::shuffle(ids.begin(), ids.end(), std::default_random_engine(static_cast<unsigned int>(seed)));
+		//std::shuffle(ids.begin(), ids.end(), std::default_random_engine(static_cast<unsigned int>(seed)));
 		CCLOG("%s", isSolvable(ids) ? "true" : "false");
 	} while (!isSolvable(ids));
 
@@ -38,8 +38,6 @@ std::vector<int> Gameboard::seedIds()
 
 std::vector<PuzzlePart>& Gameboard::getPieces()
 {
-
-	std::cout << "WARNING: Remove this function and includes: " << __FUNCTION__ << std::endl;
 	return parts;
 }
 
@@ -57,9 +55,9 @@ void Gameboard::move(PuzzlePart& part)
 			}
 		}
 	}
-	catch (const std::runtime_error& e)
+	catch (const InvalidMoveException& e)
 	{
-		std::cerr << e.what() << std::endl;
+		//Invalid move, nothing happens
 	}
 }
 
@@ -72,14 +70,12 @@ Gameboard::Gameboard() : emptyPos(TOTAL_ROWS - 1, TOTAL_COLUMNS - 1)
 
 bool Gameboard::isSolved()
 {
+	//return true;
 	std::sort(parts.begin(), parts.end());
 	for (auto& part : parts)
 	{
-
-		float correctXPos = (part.getId() - 1) % TOTAL_COLUMNS;
-		float correctYPos = (TOTAL_ROWS-1)-(part.getId() - 1) / TOTAL_ROWS;
-		CCLOG("%d {%d, %d}", part.getId(), part.getCurrentPosition().x, part.getCurrentPosition().y);
-
+		float correctXPos = static_cast<float>((part.getId() - 1) % TOTAL_COLUMNS);
+		float correctYPos = static_cast<float>((TOTAL_ROWS - 1) - (part.getId() - 1) / TOTAL_ROWS);
 		if (part.getCurrentPosition().x != correctXPos || part.getCurrentPosition().y != correctYPos)
 		{
 			return false;
@@ -93,9 +89,10 @@ bool Gameboard::isSolvable(const std::vector<int>& ids)
 	int inversion;
 	int totalInversion = 0;
 
-	for (int i = 0; i < ids.size() - 1; i++) {
+
+	for (std::size_t i = 0; i < ids.size() - 1; i++) {
 		inversion = 0;
-		for (int j = i + 1; j < parts.size(); j++) {
+		for (std::size_t j = i + 1; j < ids.size(); j++) {
 			if (ids[i] > ids[j]) {
 				inversion++;
 			}
@@ -103,6 +100,7 @@ bool Gameboard::isSolvable(const std::vector<int>& ids)
 		totalInversion += inversion;
 	}
 
+	CCLOG("TOTAL INVERSIONS: %d\n", totalInversion);
 	if (TOTAL_COLUMNS % 2 != 0) {
 		return totalInversion % 2 == 0;
 	}

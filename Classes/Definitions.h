@@ -14,5 +14,5 @@ constexpr auto ANIMATION_DURATION = 0.5F;
 constexpr auto THEME_SONG_RESOURCE = "ForestWalk-320bit.mp3";
 constexpr auto SPLASH_SCREEN_SPRITE_RESOURCE = "SplashScreen.png";
 constexpr auto BACKGROUND_SPRITE_RESOURCE = "Background.png";
-constexpr auto TITLE_SPRITE_RESOURCE = "Title.png";
 constexpr auto MENU_PREFERED_FONT_RESOURCE = "Ink free";
+constexpr auto PARTS_SPRITE_SHEET_RESOURCE = "parts.png";

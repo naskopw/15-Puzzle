@@ -19,20 +19,20 @@
     <ClCompile Include="..\Classes\MainMenuScene.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\model\Gameboard.cpp">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClCompile>
-    <ClCompile Include="..\Classes\model\PuzzlePart.cpp">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\PuzzlePartSprite.cpp">
       <Filter>Source Files\Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\Classes\model\Game.cpp">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClCompile>
     <ClCompile Include="..\Classes\GameOverScene.cpp">
       <Filter>Source Files\Classes</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\state\Game.cpp">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\state\Gameboard.cpp">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClCompile>
+    <ClCompile Include="..\Classes\state\PuzzlePart.cpp">
+      <Filter>Source Files\Classes\state</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
@@ -75,23 +75,29 @@
     <ClInclude Include="..\Classes\GameScene.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\model\Gameboard.h">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\model\Position.h">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClInclude>
-    <ClInclude Include="..\Classes\model\PuzzlePart.h">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\PuzzlePartSprite.h">
       <Filter>Source Files\Classes</Filter>
     </ClInclude>
-    <ClInclude Include="..\Classes\model\Game.h">
-      <Filter>Source Files\Classes\model</Filter>
-    </ClInclude>
     <ClInclude Include="..\Classes\GameOverScene.h">
       <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\MenuFactory.h">
+      <Filter>Source Files\Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\state\Game.h">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\state\Gameboard.h">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\state\Position.h">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\state\PuzzlePart.h">
+      <Filter>Source Files\Classes\state</Filter>
+    </ClInclude>
+    <ClInclude Include="..\Classes\state\InvalidMoveException.h">
+      <Filter>Source Files\Classes\state</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -121,7 +127,7 @@
     <Filter Include="Source Files\proj.win32">
       <UniqueIdentifier>{B1C8F552-F220-337D-BB33-C505443A2807}</UniqueIdentifier>
     </Filter>
-    <Filter Include="Source Files\Classes\model">
+    <Filter Include="Source Files\Classes\state">
       <UniqueIdentifier>{81f8e12a-56ee-447d-ac16-52017fe914fd}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
