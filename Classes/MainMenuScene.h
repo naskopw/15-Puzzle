@@ -10,8 +10,8 @@ public:
 	// implement the "static create()" method manually
 	CREATE_FUNC(MainMenuScene);
 private:
-	typedef MenuFactory<std::vector<cocos2d::MenuItemFont*>> menuFactory;
-	float menuItemSpacing = 10;
+	typedef MenuFactory<std::vector<cocos2d::MenuItemImage*>> menuImageFactory;
+	float menuItemSpacing = 50;
 	void goToGameScene(cocos2d::Ref* sender);
 	void exit(cocos2d::Ref* sender);
 	cocos2d::Size visibleSize;

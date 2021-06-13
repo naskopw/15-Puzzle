@@ -11,11 +11,10 @@ public:
 	// implement the "static create()" method manually
 	CREATE_FUNC(GameOverScene);
 private:
-	typedef MenuFactory<std::vector<cocos2d::MenuItemFont*>> menuFactory;
+	typedef MenuFactory<std::vector<cocos2d::MenuItemImage*>> menuImageFactory;
 	cocos2d::Size visibleSize;
 	cocos2d::Vec2 origin;
-	float menuItemSpacing = 10;
+	float menuItemSpacing = 50;
 	void goToGameScene(cocos2d::Ref* sender);
 	void exit(cocos2d::Ref* sender);
-	const char* WIN_MSG = "You win!";
 };

@@ -21,27 +21,23 @@ bool GameOverScene::init()
 
 	visibleSize = Director::getInstance()->getVisibleSize();
 	origin = Director::getInstance()->getVisibleOrigin();
-	menuItemSpacing = visibleSize.height / 22;
+	menuItemSpacing = visibleSize.height / 18;
 
-	auto backgroundSprite = Sprite::create(BACKGROUND_SPRITE_RESOURCE);
+	auto backgroundSprite = Sprite::create(WIN_SPRITE_RESOURCE);
 	backgroundSprite->setPosition(Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + origin.y));
 	backgroundSprite->setScale(visibleSize.height / backgroundSprite->getContentSize().height);
 	this->addChild(backgroundSprite);
 
-	MenuItemFont::setFontName(MENU_PREFERED_FONT_RESOURCE);
+	std::vector<MenuItemImage*> menuItems = {
+		MenuItemImage::create(PLAY_AGAIN_BUTTON_SPRITE_RESOURCE,
+		PLAY_AGAIN_BUTTON_SPRITE_RESOURCE,
+		CC_CALLBACK_1(GameOverScene::goToGameScene, this)),
 
-	auto winSprite = menuFactory::createTitle(WIN_MSG,
-		MENU_PREFERED_FONT_RESOURCE,
-		36,
-		Color3B(0, 0, 0),
-		Point(visibleSize.width / 2 + origin.x, visibleSize.height / 2 + menuItemSpacing * 4));
-	this->addChild(winSprite);
-
-	std::vector<MenuItemFont*> menuItems = {
-		MenuItemFont::create("Play again", CC_CALLBACK_1(GameOverScene::goToGameScene, this)),
-		MenuItemFont::create("Exit", CC_CALLBACK_1(GameOverScene::exit, this)),
+		MenuItemImage::create(EXIT_BUTTON_SPRITE_RESOURCE,
+		EXIT_BUTTON_SPRITE_RESOURCE,
+		CC_CALLBACK_1(GameOverScene::exit, this)),
 	};
-	auto menu = menuFactory::createMenu(menuItems, Color3B(0, 0, 0), menuItemSpacing);
+	auto menu = menuImageFactory::createMenu(menuItems, menuItemSpacing);
 	this->addChild(menu);
 
 	return true;

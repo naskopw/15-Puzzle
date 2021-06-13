@@ -1,8 +1,1 @@
-﻿  Building Custom Rule C:/Users/naskopw/source/repos/15-Puzzle/cocos2d/external/poly2tri/CMakeLists.txt
-  shapes.cc
-  sweep.cc
-  sweep_context.cc
-  cdt.cc
-  advancing_front.cc
-  Generating Code...
-  ext_poly2tri.vcxproj -> C:\Users\naskopw\source\repos\15-Puzzle\proj.win32\lib\Release\ext_poly2tri.lib
+﻿
