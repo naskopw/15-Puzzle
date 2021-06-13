@@ -28,6 +28,7 @@ bool GameScene::init()
 
 void GameScene::drawScene()
 {
+	CCLOG("%d", sizeof(PuzzlePart));
 	for (auto& part : game->getBoard()->getPieces())
 	{
 		sprites.push_back(std::make_unique<PuzzlePartSprite>(part));
@@ -51,11 +52,6 @@ void GameScene::setupOnTouchBeginHandler()
 			{
 				game->getBoard()->move(*sprite->part);
 				sprite->move(sprite->part->getCurrentPosition());
-
-				for (auto& x : game->getBoard()->getPieces())
-				{
-					CCLOG("%d {%d, %d}\n", x.getId(), x.getCurrentPosition().x, x.getCurrentPosition().y);
-				}
 				if (game->getBoard()->isSolved()) 
 				{
 					auto scene = GameOverScene::createScene();	

@@ -46,7 +46,6 @@ void SplashScreen::startAudio() const
 void SplashScreen::goToMainMenuScene(float dt)
 {
 	auto scene = MainMenuScene::createScene();
-
 	Director::getInstance()->replaceScene(TransitionFade::create(TRANSITION_TIME, scene));
 }
 

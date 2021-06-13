@@ -1,11 +1,9 @@
-#include <iostream>
 #include <numeric>
 #include <algorithm>
 #include <chrono>
 #include <random>
 #include "Gameboard.h"
 #include "InvalidMoveException.h"
-#include "../cocos2d.h"
 
 void Gameboard::createParts()
 {
@@ -29,8 +27,7 @@ std::vector<int> Gameboard::seedIds()
 	auto seed = std::chrono::system_clock::now().time_since_epoch().count();
 	do
 	{
-		//std::shuffle(ids.begin(), ids.end(), std::default_random_engine(static_cast<unsigned int>(seed)));
-		CCLOG("%s", isSolvable(ids) ? "true" : "false");
+		std::shuffle(ids.begin(), ids.end(), std::default_random_engine(static_cast<unsigned int>(seed)));
 	} while (!isSolvable(ids));
 
 	return ids;
@@ -55,7 +52,7 @@ void Gameboard::move(PuzzlePart& part)
 			}
 		}
 	}
-	catch (const InvalidMoveException& e)
+	catch (const InvalidMoveException&)
 	{
 		//Invalid move, nothing happens
 	}
@@ -70,47 +67,44 @@ Gameboard::Gameboard() : emptyPos(TOTAL_ROWS - 1, TOTAL_COLUMNS - 1)
 
 bool Gameboard::isSolved()
 {
-	//return true;
-	std::sort(parts.begin(), parts.end());
 	for (auto& part : parts)
 	{
 		float correctXPos = static_cast<float>((part.getId() - 1) % TOTAL_COLUMNS);
-		float correctYPos = static_cast<float>((TOTAL_ROWS - 1) - (part.getId() - 1) / TOTAL_ROWS);
+		float correctYPos = static_cast<float>((part.getId() - 1) / TOTAL_ROWS);
 		if (part.getCurrentPosition().x != correctXPos || part.getCurrentPosition().y != correctYPos)
 		{
 			return false;
 		}
 	}
-	return (emptyPos.x == TOTAL_COLUMNS - 1 && emptyPos.y == 0);
+	return (emptyPos.x == TOTAL_COLUMNS - 1 && emptyPos.y == TOTAL_ROWS - 1);
 
 }
-bool Gameboard::isSolvable(const std::vector<int>& ids)
+bool Gameboard::isSolvable(const IdCollection& ids)
 {
-	int inversion;
-	int totalInversion = 0;
+	int totalInversions = countInversions(ids);
+	if (TOTAL_COLUMNS % 2 != 0) {
+		return totalInversions % 2 == 0;
+	}
+	if ((TOTAL_ROWS - emptyPos.y) % 2 == 0) {
+		return totalInversions % 2 != 0;
+	}
+	else {
+		return totalInversions % 2 == 0;
+	}
+	return false;
+}
 
-
-	for (std::size_t i = 0; i < ids.size() - 1; i++) {
-		inversion = 0;
-		for (std::size_t j = i + 1; j < ids.size(); j++) {
-			if (ids[i] > ids[j]) {
+int Gameboard::countInversions(const IdCollection& ids)
+{
+	int totalInversions = 0;
+	for (std::size_t row = 0; row < ids.size() - 1; row++) {
+		int inversion = 0;
+		for (std::size_t col = row + 1; col < ids.size(); col++) {
+			if (ids[row] > ids[col]) {
 				inversion++;
 			}
 		}
-		totalInversion += inversion;
+		totalInversions += inversion;
 	}
-
-	CCLOG("TOTAL INVERSIONS: %d\n", totalInversion);
-	if (TOTAL_COLUMNS % 2 != 0) {
-		return totalInversion % 2 == 0;
-	}
-	else {
-		if ((TOTAL_ROWS - emptyPos.y) % 2 == 0) {
-			return totalInversion % 2 != 0;
-		}
-		else {
-			return totalInversion % 2 == 0;
-		}
-	}
-	return false;
+	return totalInversions;
 }

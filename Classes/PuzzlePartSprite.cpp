@@ -22,16 +22,16 @@ float PuzzlePartSprite::screenXPos(const Position& pos) const
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
-	float margin = visibleSize.width * (1.0F - BOARD_SCALE_SIZE) + origin.x;
-	return margin + static_cast<float>(pos.x) * spriteCellSize;
+	float margin = (visibleSize.width - TOTAL_COLUMNS*spriteCellSize + origin.x)/2;
+	return margin + (static_cast<float>(pos.x)+0.5F) * spriteCellSize;
 }
 
 float PuzzlePartSprite::screenYPos(const Position& pos) const
 {
 	auto visibleSize = Director::getInstance()->getVisibleSize();
 	auto origin = Director::getInstance()->getVisibleOrigin();
-	float margin = visibleSize.height * (1.0F - BOARD_SCALE_SIZE) + origin.y;
-	return margin + static_cast<float>(pos.y) * spriteCellSize;
+	float margin = visibleSize.height * BOARD_SCALE_SIZE + origin.y;
+	return margin - (static_cast<float>(pos.y)+0.5F) * spriteCellSize;
 }
 
 void PuzzlePartSprite::move(const Position& pos)

@@ -11,7 +11,7 @@ public:
 
 	static cocos2d::Sprite* createTitle(const char* msg,
 		const char* font,
-		const int fontSize,
+		const float fontSize,
 		const cocos2d::Color3B& color,
 		const cocos2d::Point& position);
 
@@ -38,7 +38,7 @@ inline cocos2d::Menu* MenuFactory<Container>::createMenu(Container& menuItems,
 template<typename Container>
 inline cocos2d::Sprite* MenuFactory<Container>::createTitle(const char* msg,
 	const char* font,
-	const int fontSize,
+	const float fontSize,
 	const cocos2d::Color3B& color,
 	const cocos2d::Point& position)
 {
