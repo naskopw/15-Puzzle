@@ -22,4 +22,4 @@ Attribution 4.0 International (CC BY 4.0)
 https://creativecommons.org/licenses/by/4.0/
 
 ## Screenshots
-![Gameplay](Screenshots/1.png)
+![Gameplay](/Screenshots/1.png)
